@@ -224,6 +224,26 @@ def u4(d):
     return score, {"literals": lits, "hardColor": hard, "strings": strings, "shots": len(shots), "adaptive": adaptive}
 
 
+def u5(d):
+    f = os.path.join(d, "index.html")
+    if not os.path.exists(f):
+        return 0, {"missing": True}
+    src = read(f); shot = os.path.join(d, "render.png")
+    sh(f'"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --disable-gpu --hide-scrollbars '
+       f'--window-size=1200,760 --screenshot={shot} file://{f}', timeout=60)
+    _, o = sh(f"uv run -q --with pillow --with numpy python {BENCH}/tools/imgsim.py {PROBES}/u5-img2code/seed/design.png {shot}", timeout=120)
+    try:
+        sim = float(o.strip().splitlines()[-1])
+    except Exception:
+        sim = 0.0
+    words = ["Orbit 运营台", "营销活动", "财务报表", "导出报表", "¥128,430", "1,842", "¥69.7", "1.8%", "0.4pp", "近 12 周销售额",
+             "待处理事项", "售后申请", "库存预警商品", "优惠券即将到期", "W12", "去处理", "紧急"]
+    rec = sum(w in src for w in words) / len(words)
+    ext = bool(re.findall(r'(?:src|href)=["\']https?://', src))
+    score = round(70 * max(0.0, min(1.0, (sim - 0.5) / 0.5)) + 30 * rec) - (15 if ext else 0)
+    return max(score, 0), {"sim": sim, "text_recall": round(rec, 2), "external": ext}
+
+
 def num_near(text, value, tol):
     for m in re.finditer(r"-?[\d,]+(?:\.\d+)?", text):
         try:
@@ -329,7 +349,7 @@ def t5(d):
 
 
 CHECKS = {"c1-bugfix": c1, "c2-feature": c2, "c3-refactor": c3, "d1-design": d1, "d2-plan": d2, "u1-web": u1,
-          "u2-swiftui": u2, "u3-uxreview": u3, "u4-compose": u4, "t1-data": t1, "t2-log": t2, "t3-files": t3,
+          "u2-swiftui": u2, "u3-uxreview": u3, "u4-compose": u4, "u5-img2code": u5, "t1-data": t1, "t2-log": t2, "t3-files": t3,
           "t4-research": t4, "t5-writing": t5}
 
 

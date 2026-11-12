@@ -17,7 +17,7 @@ capacity_hit() {  # backend overloaded (503 / dropped streams): retry after a sh
 }
 one() {
   local p=$1 n=$2
-  for attempt in {1..8}; do
+  for attempt in {1..40}; do
     $S/run.sh $R $p $n >/dev/null
     if quota_hit $S/runs/$R/$p-$n; then
       local w=$(python3 $S/tools/quota_wait.py); log "$p-$n quota hit (attempt $attempt), sleeping ${w}s"; sleep $w
