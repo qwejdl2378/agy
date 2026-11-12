@@ -1,0 +1,3 @@
+<resources>
+    <style name="SnapshotTheme" parent="android:Theme.Material.Light.NoActionBar" />
+</resources>
