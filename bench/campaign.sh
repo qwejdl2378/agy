@@ -14,7 +14,7 @@ quota_hit() {  # agy failed because of quota/rate limiting (not a normal task fa
 capacity_hit() {  # backend overloaded (503 / dropped streams): retry after a short pause
   local st=$(python3 -c "import json;print(json.load(open('$1.json')).get('status'))" 2>/dev/null)
   [[ $st == SUCCESS ]] && return 1
-  grep -qiE 'No capacity|UNAVAILABLE|503|unexpected EOF|deadline|timed? ?out' $1.err $1.json 2>/dev/null || [[ ! -s $1.json ]]
+  grep -qiE 'No capacity|UNAVAILABLE|503|502|ECONNRESET|PERMISSION_DENIED|403|unexpected EOF|deadline|timed? ?out|print timeout' $1.err $1.json 2>/dev/null || [[ ! -s $1.json ]]
 }
 one() {
   local p=$1 n=$2
