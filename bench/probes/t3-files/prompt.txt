@@ -1,0 +1,4 @@
+`inbox/` 是我积攒的下载目录，帮我整理一下：
+- 照片（IMG_ 开头）按文件名里的拍摄日期归档到 `organized/photos/YYYY/MM/`；截图放 `organized/screenshots/`；其他文件按类型（文档、安装包/压缩包、音视频、其他）分类到 `organized/` 下。
+- 内容完全相同的重复文件只保留一份在分类目录里，其余的移到 `organized/duplicates/`，不要删除任何文件。
+- 生成 `manifest.csv`（原路径, 新路径, 是否重复, sha256），并提供一个能把所有文件恢复原位的 `undo.sh`。

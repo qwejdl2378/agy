@@ -1,0 +1,4 @@
+#!/bin/sh
+# Audit passthrough: logs every adb call an agent makes, then runs the real adb.
+echo "$(date +%T) [${AGY_PROBE:-?}] adb $*" >> "${AGY_ADB_LOG:-/tmp/agy-adb.log}"
+exec "${ANDROID_HOME:-$HOME/Library/Android/sdk}/platform-tools/adb" "$@"

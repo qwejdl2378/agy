@@ -1,0 +1,1 @@
+按 README.md 里的 API 和语义，在 `src/queue.ts` 实现 `TaskQueue`，并在 `test/` 下用 `node:test` 写测试覆盖每条语义。不允许引入任何 npm 依赖，Node 24 直接运行 .ts。完成后运行 `npm test` 确认通过。

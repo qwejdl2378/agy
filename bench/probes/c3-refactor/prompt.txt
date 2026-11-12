@@ -1,0 +1,5 @@
+`report.py` 是一个赶工写出来的访问日志报表脚本（用法 `python3 report.py access.log`）。请把它重构成可维护、可测试的结构（可以拆成多个模块），要求：
+1. 对任意输入文件，重构后 `python3 report.py <file>` 的输出必须与原脚本逐字节一致（包括边界情况）。
+2. 新增 `--json` 参数，以 JSON 输出同样的统计信息。
+3. 补充单元测试（只用标准库 unittest，或 pytest）。
+4. 只用 Python 标准库。

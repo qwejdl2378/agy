@@ -1,0 +1,35 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+body{margin:0;font-family:-apple-system,"PingFang SC";background:#f2f2f2;width:390px}
+.top{background:#3b82f6;color:#fff;padding:14px 10px;font-size:17px;display:flex;justify-content:space-between}
+.top span{font-size:11px;opacity:.9}
+.card{background:#fff;margin:9px 7px;padding:13px 11px;border-radius:3px}
+.card.b{margin:15px 12px;padding:8px}
+h3{margin:0 0 6px;font-size:14px;color:#999}
+input{width:92%;border:1px solid #e5e5e5;padding:7px;margin:4px 0;font-size:12px;color:#bbb}
+.req{border-color:#f87171}
+.addr{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:13px;color:#aaa}
+table{width:100%;font-size:12px;border-collapse:collapse;color:#aaa}
+td{padding:3px 2px;text-align:left}
+.err{background:#fee2e2;color:#b91c1c;font-size:11px;padding:6px;margin:6px 7px;font-family:monospace}
+.btns{display:flex;gap:3px;padding:6px}
+.btns button{flex:1;padding:9px 0;border:0;color:#fff;font-size:13px;border-radius:2px}
+.p{background:#3b82f6}.d{background:#ef4444}
+.icons{display:flex;gap:6px;justify-content:flex-end}
+.icons i{width:14px;height:14px;background:#cbd5e1;border-radius:2px;display:inline-block}
+.hint{font-size:10px;color:#ccc;margin:4px 9px}
+</style></head><body>
+<div class="top">确认订单 <span>ID: ord_7f3a91c2e</span></div>
+<div class="err">Error: NullPointerException at OrderService.submit(OrderService.java:142) code=E_ADDR_NULL</div>
+<div class="card"><h3>收货信息</h3>
+<input class="req" placeholder="收货人"><input class="req" placeholder="手机号"><input placeholder="邮编">
+<div class="addr">配送地址：北京市朝阳区建国路88号SOHO现代城C座1902室（工作日9:00-18:00送达，其余时间请放前台）</div>
+<div class="icons"><i></i><i></i><i></i></div></div>
+<div class="card b"><h3>商品明细</h3><table>
+<tr><td>机械键盘 K8</td><td>x1</td><td>¥599.00</td></tr>
+<tr><td>USB-C 数据线 2m（编织）</td><td>x12</td><td>¥1,068</td></tr>
+<tr><td>键帽</td><td>x1</td><td>¥89.5</td></tr>
+<tr><td>运费</td><td></td><td>¥0</td></tr>
+<tr><td><b>合计</b></td><td></td><td>¥1756.5</td></tr></table>
+<div class="hint">下单即表示同意《服务条款》《隐私政策》《自动续费协议》，订单 2026/11/13 或 13-11-2026 前有效</div></div>
+<div class="btns"><button class="p">保存草稿</button><button class="p">提交订单</button><button class="d">删除订单</button><button class="p">分享</button></div>
+</body></html>
