@@ -4,7 +4,7 @@
 # A turn killed by a transient backend error (403/429/502/503/timeout) is resumed in the same
 # conversation instead of restarting, so finished work is kept. Usage/duration are summed.
 S=${0:A:h}; R=$1; P=$2; N=$3; $S/setup.sh
-D=$S/runs/$R/$P-$N; rm -rf $D $D.part*; mkdir -p $D
+D=$S/runs/$R/$P-$N; rm -rf $D $D.part*(N); mkdir -p $D
 [[ -d $S/probes/$P/seed ]] && cp -R $S/probes/$P/seed/. $D/
 cd $D && git init -q && git add -A && git -c user.name=bench -c user.email=bench@local commit -qm seed --allow-empty
 AGY=( ${=AGY_BIN:-/Applications/magpie.app/Contents/MacOS/magpie agy} run --effort ${AGY_EFFORT:-high} --mode accept-edits
